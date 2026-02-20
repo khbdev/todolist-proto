@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package notes;
+
+option go_package = "github.com/khbdev/todolist-proto/notes/notespb";
+
+service NotesService {
+
+  // CREATE
+  rpc CreateNote(CreateNoteRequest) returns (NoteResponse);
+
+  // GET ALL (by user_id)
+  rpc GetNotesByUser(GetNotesByUserRequest) returns (NotesListResponse);
+
+  // GET ONE (by user_id + note_id)
+  rpc GetNoteByID(GetNoteByIDRequest) returns (NoteResponse);
+
+  // UPDATE
+  rpc UpdateNote(UpdateNoteRequest) returns (NoteResponse);
+
+  // DELETE
+  rpc DeleteNote(DeleteNoteRequest) returns (DeleteNoteResponse);
+}
+
+message Note {
+  int64 id = 1;
+  int64 user_id = 2;
+  string title = 3;
+  string text = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+message CreateNoteRequest {
+  int64 user_id = 1;
+  string title = 2;
+  string text = 3;
+}
+
+message GetNotesByUserRequest {
+  int64 user_id = 1;
+}
+
+message GetNoteByIDRequest {
+  int64 user_id = 1;
+  int64 note_id = 2;
+}
+
+message UpdateNoteRequest {
+  int64 user_id = 1;
+  int64 note_id = 2;
+  string title = 3;
+  string text = 4;
+}
+
+message DeleteNoteRequest {
+  int64 user_id = 1;
+  int64 note_id = 2;
+}
+
+message NoteResponse {
+  Note note = 1;
+  bool success = 2;
+}
+
+message NotesListResponse {
+  repeated Note notes = 1;
+}
+
+message DeleteNoteResponse {
+  bool success = 1;
+}
