@@ -384,7 +384,6 @@ func (x *DeleteNoteRequest) GetNoteId() int64 {
 type NoteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Note          *Note                  `protobuf:"bytes,1,opt,name=note,proto3" json:"note,omitempty"`
-	Success       bool                   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -424,13 +423,6 @@ func (x *NoteResponse) GetNote() *Note {
 		return x.Note
 	}
 	return nil
-}
-
-func (x *NoteResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
 }
 
 type NotesListResponse struct {
@@ -551,10 +543,9 @@ const file_notes_notes_proto_rawDesc = "" +
 	"\x04text\x18\x04 \x01(\tR\x04text\"E\n" +
 	"\x11DeleteNoteRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
-	"\anote_id\x18\x02 \x01(\x03R\x06noteId\"I\n" +
+	"\anote_id\x18\x02 \x01(\x03R\x06noteId\"/\n" +
 	"\fNoteResponse\x12\x1f\n" +
-	"\x04note\x18\x01 \x01(\v2\v.notes.NoteR\x04note\x12\x18\n" +
-	"\asuccess\x18\x02 \x01(\bR\asuccess\"6\n" +
+	"\x04note\x18\x01 \x01(\v2\v.notes.NoteR\x04note\"6\n" +
 	"\x11NotesListResponse\x12!\n" +
 	"\x05notes\x18\x01 \x03(\v2\v.notes.NoteR\x05notes\".\n" +
 	"\x12DeleteNoteResponse\x12\x18\n" +

@@ -60,7 +60,6 @@ message DeleteNoteRequest {
 
 message NoteResponse {
   Note note = 1;
-  bool success = 2;
 }
 
 message NotesListResponse {
