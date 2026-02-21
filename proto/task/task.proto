@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package task;
+
+option go_package = "github.com/khbdev/todolist-proto/task/taskpb";
+
+
+
+service TaskService {
+  rpc CreateTask (CreateTaskRequest) returns (CreateTaskResponse);
+  rpc GetTasksByUser (GetTasksByUserRequest) returns (GetTasksByUserResponse);
+  rpc UpdateTask (UpdateTaskRequest) returns (UpdateTaskResponse);
+  rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse);
+}
+
+
+
+message Task {
+  int64 id = 1;
+  int64 user_id = 2;
+  string title = 3;
+  string remind_at = 4;   
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+
+
+message CreateTaskRequest {
+  int64 user_id = 1;
+  string title = 2;
+  string remind_at = 3;
+}
+
+message CreateTaskResponse {
+  Task task = 1;
+  bool success = 2;
+}
+
+// -------- GET ALL BY USER --------
+
+message GetTasksByUserRequest {
+  int64 user_id = 1;
+}
+
+message GetTasksByUserResponse {
+  repeated Task tasks = 1;
+}
+
+// -------- UPDATE --------
+
+message UpdateTaskRequest {
+  int64 task_id = 1;
+  string title = 2;
+  string remind_at = 3;
+}
+
+message UpdateTaskResponse {
+  Task task = 1;
+  bool success = 2;
+}
+
+// -------- DELETE --------
+
+message DeleteTaskRequest {
+  int64 task_id = 1;
+}
+
+message DeleteTaskResponse {
+  bool success = 1;
+}
