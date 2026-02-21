@@ -34,7 +34,6 @@ message CreateTaskRequest {
 
 message CreateTaskResponse {
   Task task = 1;
-  bool success = 2;
 }
 
 
