@@ -37,7 +37,7 @@ message CreateTaskResponse {
   bool success = 2;
 }
 
-// -------- GET ALL BY USER --------
+
 
 message GetTasksByUserRequest {
   int64 user_id = 1;
@@ -47,7 +47,7 @@ message GetTasksByUserResponse {
   repeated Task tasks = 1;
 }
 
-// -------- UPDATE --------
+
 
 message UpdateTaskRequest {
   int64 task_id = 1;
@@ -60,7 +60,7 @@ message UpdateTaskResponse {
   bool success = 2;
 }
 
-// -------- DELETE --------
+
 
 message DeleteTaskRequest {
   int64 task_id = 1;
